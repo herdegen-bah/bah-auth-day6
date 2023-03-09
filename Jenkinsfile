@@ -18,7 +18,7 @@ node {
     }
 	
 	stage ("Containerize the app-docker build - AuthApi") {
-        sh 'docker build --rm -t auth-day7:v1.0 .'
+        sh 'docker build --rm -t settlagekl/auth-day7:v1.0 .'
     }
     
     stage ("Inspect the docker image - AuthApi"){
@@ -39,7 +39,7 @@ node {
 	
 	  if(response=="Yes") {
 	    stage('Deploy to Kubenetes cluster - AuthApi') {
-		  sh "kubectl create deployment auth-day7 --image=auth-day7:v1.0"
+		  sh "kubectl create deployment auth-day7 --image=settlagekl/auth-day7:v1.0"
     		sh "kubectl set env deployment/auth-day7 API_HOST=\$(kubectl get service/data-day7 -o jsonpath='{.spec.clusterIP}'):8080"
     		sh "kubectl expose deployment auth-day7 --type=LoadBalancer --port=8081"
 	    }
