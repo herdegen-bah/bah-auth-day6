@@ -11,7 +11,7 @@ node {
         sh 'gradle bootjar'
     }
     
-    stage ("Delete Previous Env - AuthApi){
+    stage ("Delete Previous Env - AuthApi"){
     	sh 'kubectl delete deployment auth-day7 || true'
     	sh 'kubectl delete service auth-day7 || true'
     	sh 'docker rmi auth-day7 || true'
