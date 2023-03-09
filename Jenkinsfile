@@ -27,7 +27,7 @@ node {
     }
     
     stage ("Run Docker container instance - AuthApi"){
-        sh "docker run -d --rm --name auth-day7 -p 8081:8081 event-auth:v1.0"
+        sh "docker run -d --rm --name auth-day7 -p 8081:8081 auth-day7:v1.0"
     }
     
 
