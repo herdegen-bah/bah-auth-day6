@@ -18,19 +18,6 @@ node {
     	sh 'docker rmi auth-day7 || true'
     }
 	
-	stage ("Containerize the app-docker build - AuthApi") {
-        sh 'docker build --rm -t settlagekl/auth-day7:v1.0 .'
-    }
-    
-    stage ("Inspect the docker image - AuthApi"){
-        sh "docker images auth-day7:v1.0"
-        sh "docker inspect auth-day7:v1.0"
-    }
-    
-    stage ("Run Docker container instance - AuthApi"){
-        sh "docker run -d --rm --name auth-day7 -p 8081:8081 auth-day7:v1.0"
-    }
-    
 
     stage('User Acceptance Test - AuthApi') {
 	
